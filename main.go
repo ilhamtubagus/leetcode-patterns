@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/ilhamtubagus/leetcode-patterns/fast_and_slow_pointer"
+	"github.com/ilhamtubagus/leetcode-patterns/linked_list_reversal"
 	"github.com/ilhamtubagus/leetcode-patterns/prefix_sum"
 	"github.com/ilhamtubagus/leetcode-patterns/sliding_window"
 	"github.com/ilhamtubagus/leetcode-patterns/two_pointer"
@@ -22,6 +23,13 @@ func main() {
 	one := fast_and_slow_pointer.ListNode{Val: 1, Next: &two}
 
 	// 1 -> 2 -> 3 -> 4 -> 2
-	isCycled := fast_and_slow_pointer.HasCycle(&one)
-	fmt.Println(isCycled)
+	_ = fast_and_slow_pointer.HasCycle(&one)
+
+	// 5 -> 6 -> 7
+	seven := linked_list_reversal.ListNode{Val: 7}
+	six := linked_list_reversal.ListNode{Val: 6, Next: &seven}
+	five := linked_list_reversal.ListNode{Val: 5, Next: &six}
+
+	reversed := linked_list_reversal.ReverseList(&five)
+	fmt.Println(reversed.String())
 }
