@@ -21,7 +21,6 @@ func main() {
 	two := fast_and_slow_pointer.ListNode{Val: 2, Next: &three}
 	//four.Next = &two
 	one := fast_and_slow_pointer.ListNode{Val: 1, Next: &two}
-
 	// 1 -> 2 -> 3 -> 4 -> 2
 	_ = fast_and_slow_pointer.HasCycle(&one)
 
@@ -29,7 +28,14 @@ func main() {
 	seven := linked_list_reversal.ListNode{Val: 7}
 	six := linked_list_reversal.ListNode{Val: 6, Next: &seven}
 	five := linked_list_reversal.ListNode{Val: 5, Next: &six}
+	_ = linked_list_reversal.ReverseList(&five)
 
-	reversed := linked_list_reversal.ReverseList(&five)
-	fmt.Println(reversed.String())
+	// 8 -> 9 -> 10 -> 11 -> 12
+	twelve := linked_list_reversal.ListNode{Val: 12}                // 5
+	eleven := linked_list_reversal.ListNode{Val: 11, Next: &twelve} // 4
+	ten := linked_list_reversal.ListNode{Val: 10, Next: &eleven}    // 3
+	nine := linked_list_reversal.ListNode{Val: 9, Next: &ten}       // 2
+	eight := linked_list_reversal.ListNode{Val: 8, Next: &nine}     // 1
+	reversedBetween := linked_list_reversal.ReverseBetween(&eight, 1, 2)
+	fmt.Println(reversedBetween)
 }

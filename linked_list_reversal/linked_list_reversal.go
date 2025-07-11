@@ -42,3 +42,80 @@ func ReverseList(head *ListNode) *ListNode {
 
 	return head
 }
+
+func ReverseBetween(head *ListNode, left int, right int) *ListNode {
+	if head == nil || left == right || left <= 0 {
+		return head
+	}
+
+	var previousLeft, rightNode, next *ListNode = nil, nil, nil
+	dummy := &ListNode{Val: 0, Next: head}
+	current := dummy
+
+	if left == 1 {
+		for i := 0; i < right; i++ {
+			next = current.Next
+			if i < left {
+				previousLeft = current.Next
+			}
+			rightNode = current.Next
+			current = next
+		}
+	} else {
+		for i := 0; i < right; i++ {
+			next = current.Next
+			if i < left-1 {
+				previousLeft = current.Next
+			}
+			rightNode = current.Next
+			current = next
+		}
+	}
+
+	// Detach
+	if rightNode == nil {
+		return head
+	}
+	var leftNode *ListNode = nil
+	if left == 1 {
+		leftNode = previousLeft
+	} else {
+		leftNode = previousLeft.Next
+	}
+
+	afterRight := rightNode.Next
+	rightNode.Next = nil
+
+	// Reverse
+	current = leftNode
+	var previous *ListNode = nil
+	for current != nil {
+		next = current.Next
+		current.Next = previous
+		previous = current
+		current = next
+	}
+	headReversed := previous
+
+	// Attach
+	if left == 1 {
+		previousLeft = headReversed
+	} else {
+		previousLeft.Next = headReversed
+	}
+
+	current = previousLeft
+	for current != nil {
+		next = current.Next
+		if current.Next == nil {
+			current.Next = afterRight
+		}
+		current = next
+	}
+
+	if left == 1 {
+		return previousLeft
+	} else {
+		return head
+	}
+}
