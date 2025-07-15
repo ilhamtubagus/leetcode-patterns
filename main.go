@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/ilhamtubagus/leetcode-patterns/fast_and_slow_pointer"
 	"github.com/ilhamtubagus/leetcode-patterns/linked_list_reversal"
+	"github.com/ilhamtubagus/leetcode-patterns/next_greater_element"
 	"github.com/ilhamtubagus/leetcode-patterns/prefix_sum"
 	"github.com/ilhamtubagus/leetcode-patterns/sliding_window"
 	"github.com/ilhamtubagus/leetcode-patterns/two_pointer"
@@ -36,6 +37,15 @@ func main() {
 	ten := linked_list_reversal.ListNode{Val: 10, Next: &eleven}    // 3
 	nine := linked_list_reversal.ListNode{Val: 9, Next: &ten}       // 2
 	eight := linked_list_reversal.ListNode{Val: 8, Next: &nine}     // 1
-	reversedBetween := linked_list_reversal.ReverseBetween(&eight, 1, 2)
-	fmt.Println(reversedBetween)
+	_ = linked_list_reversal.ReverseBetween(&eight, 1, 2)
+
+	//sourceArr := []int{1, 7, 9, 5}
+	//monotonicStack := next_greater_element.MonotonicStack{}
+	//for _, num := range sourceArr {
+	//	monotonicStack.Push(num)
+	//}
+
+	nums1 := []int{4, 1, 2}
+	nums2 := []int{1, 3, 4, 2}
+	fmt.Printf("%v\n", next_greater_element.NextGreaterElement(nums1, nums2))
 }
